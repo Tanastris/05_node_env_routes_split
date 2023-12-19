@@ -19,18 +19,21 @@ app.get('/', (req, res) => {
 // importuojam userRouter
 const userRouter = require('./routes/usersRouters');
 const booksRouter = require('./routes/bookRouters');
+const peopleRouter = require('./routes/peopleRouters');
 
 // panaudoju users routeri
 app.use('/', userRouter);
 app.use('/', booksRouter);
+app.use('/', peopleRouter);
 
 // route error 404
 // jei iki cia atejo kodas, reiskia tokio
 // url kuriuo kreipiamasi nera
-app.get('*', (req, res) => {
+app.all('*', (req, res) => {
   res.status(404).json({
     msg: 'Path does not exist',
     url: req.path,
+    method: req.method,
   });
 });
 
