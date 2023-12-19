@@ -9,7 +9,7 @@ GET http://localhost:3000/api/users/1
 GET http://localhost:3000/api/books
 ###POST all books
 POST http://localhost:3000/api/books
-Content-Type: application/application/json
+Content-Type: application/json
 
 {
   "title": "Book 1",
@@ -30,3 +30,7 @@ GET http://localhost:3000/api/people/married
 ### get salary
 
 GET http://localhost:3000/api/people/salary/avg
+### get salary
+
+GET http://localhost:3000/api/people/colors/violet
+

@@ -1,6 +1,12 @@
 const express = require('express');
 
+const { v4: uid } = require('uuid');
+
 const booksRouter = express.Router();
+
+// Middleware
+// for parsing application/json
+
 // data
 const books = [
   {
@@ -62,5 +68,13 @@ booksRouter.get('/api/books/:bookId', (req, res) => {
 });
 
 // POST /api/books
+booksRouter.post('/api/books', (req, res) => {
+  const newPost = {
+    id: uid(),
+    ...req.body,
+  };
+  books.push(newPost);
+  res.json(newPost);
+});
 
 module.exports = booksRouter;
