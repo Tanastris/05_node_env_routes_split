@@ -99,6 +99,16 @@ app.get('/api/books', (req, res) => {
   res.json(books);
 });
 
+// route error
+// jei iki cia atejo kodas, reiskia tokio
+// url kuriuo kreipiamasi nera
+app.get('*', (req, res) => {
+  res.status(404).json({
+    msg: 'Path does not exist',
+    url: req.path,
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server runing on http://localhost:${PORT}`);
 });
