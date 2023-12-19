@@ -99,6 +99,17 @@ app.get('/api/books', (req, res) => {
   res.json(books);
 });
 
+// GET /api/books/2 grazina knyga kurios id 2
+app.get('/api/books/:bookId', (req, res) => {
+  const found = books.find((bObj) => bObj.id === +req.params.bookId);
+  if (found === undefined){
+  res.status(404).json({
+    msg: `user not found with id ${userId}`,
+  });
+  return;
+
+  res.json(found);
+});
 // route error
 // jei iki cia atejo kodas, reiskia tokio
 // url kuriuo kreipiamasi nera
